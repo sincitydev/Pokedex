@@ -25,18 +25,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokedex" translatesAutoresizingMaskIntoConstraints="NO" id="2LD-yl-UsK">
-                                        <rect key="frame" x="10" y="183.5" width="355" height="100"/>
+                                        <rect key="frame" x="20" y="183.5" width="335" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="gii-bn-v3d"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.40009106595092025" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.25112634202453987" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2LD-yl-UsK" firstAttribute="leading" secondItem="zwX-vU-CMG" secondAttribute="leading" constant="10" id="0nH-EK-laQ"/>
+                                    <constraint firstItem="2LD-yl-UsK" firstAttribute="leading" secondItem="zwX-vU-CMG" secondAttribute="leading" constant="20" id="0nH-EK-laQ"/>
                                     <constraint firstItem="2LD-yl-UsK" firstAttribute="centerX" secondItem="zwX-vU-CMG" secondAttribute="centerX" id="Ib0-Ne-x7r"/>
                                     <constraint firstItem="2LD-yl-UsK" firstAttribute="centerY" secondItem="zwX-vU-CMG" secondAttribute="centerY" constant="-100" id="LC5-3d-DNC"/>
-                                    <constraint firstAttribute="trailing" secondItem="2LD-yl-UsK" secondAttribute="trailing" constant="10" id="nvJ-iV-7Hu"/>
+                                    <constraint firstAttribute="trailing" secondItem="2LD-yl-UsK" secondAttribute="trailing" constant="20" id="nvJ-iV-7Hu"/>
                                 </constraints>
                             </view>
                         </subviews>
