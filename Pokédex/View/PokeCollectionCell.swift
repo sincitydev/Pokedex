@@ -16,3 +16,25 @@ class PokeCollectionCell: UICollectionViewCell {
         pokemonNameLabel.text = pokemon.name
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

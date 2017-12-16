@@ -10,6 +10,18 @@ import UIKit
 
 class PokemonViewController: UIViewController {
     
+    @IBOutlet weak var pokemonNameLabel: UILabel!
+    
+    @IBOutlet weak var pokemonIDLabel: UILabel!
+    
+    @IBOutlet weak var pokemonHeightLabel: UILabel!
+    
+    @IBOutlet weak var pokemonWeightLabel: UILabel!
+    
+    @IBOutlet weak var pokemonCategoryLabel: UILabel!
+    
+    @IBOutlet weak var pokemonAbilitiesLabel: UILabel!
+    
     var pokemon: Pokemon!
     let database = Database.instance
     var pokemonStats: PokemonStatsResponse?
@@ -18,6 +30,14 @@ class PokemonViewController: UIViewController {
         super.viewDidLoad()
         database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse) in
             self?.pokemonStats = pokemonStatsResponse
+<<<<<<< Updated upstream
+=======
+            //print(self?.pokemonStats!.name)
+            self?.pokemonNameLabel.text = self?.pokemonStats?.name
+            self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
+            self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
+            
+>>>>>>> Stashed changes
         }
     }
     
