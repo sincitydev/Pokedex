@@ -9,6 +9,7 @@
 import UIKit
 
 class PokemonViewController: UIViewController {
+    
     var pokemon: Pokemon!
     let database = Database.instance
     var pokemonStats: PokemonStatsResponse?

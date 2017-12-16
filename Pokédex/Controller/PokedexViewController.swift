@@ -9,13 +9,21 @@
 import UIKit
 
 class PokedexViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    
+    
+    
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
+    
+    
     
     var pokemons = [Pokemon]()
     var pokedexResponse: PokedexResponse?
     
     let database = Database.instance
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +32,12 @@ class PokedexViewController: UIViewController {
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         activityIndicator.startAnimating()
         database.fetchPokedex { [weak self] (pokedexResponse) in
             self?.pokedexResponse = pokedexResponse
             self?.pokemons = pokedexResponse?.results ?? []
             self?.activityIndicator.stopAnimating()
-            self?.tableView.reloadData()
+            self?.collectionView.reloadData()
         }
     }
     
@@ -74,3 +79,56 @@ extension PokedexViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+
+extension PokedexViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pokemons.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as! PokeCollectionCell
+        
+        let pokemon = pokemons[indexPath.item]
+    
+        cell.configureCell(pokemon: pokemon)
+        
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        let totalWidth = collectionView.frame.width
+        
+        let halfWidth = totalWidth/2
+        
+        let cellWidth = halfWidth - 10
+        
+        let totalHeight = collectionView.frame.height
+        
+        let cellHeight = totalHeight/3
+        
+        
+        
+        
+        
+        return CGSize(width: cellWidth, height: 280)
+        
+        
+        
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+

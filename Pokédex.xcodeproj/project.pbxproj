@@ -16,6 +16,8 @@
 		CA47366D1FE3449A00D7A56B /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47366C1FE3449A00D7A56B /* PokemonCell.swift */; };
 		CA47366F1FE3470800D7A56B /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47366E1FE3470800D7A56B /* Pokemon.swift */; };
 		CA4736711FE364A100D7A56B /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4736701FE364A100D7A56B /* PokemonViewController.swift */; };
+		E2E055191FE4B48500959837 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E055181FE4B48500959837 /* RoundedView.swift */; };
+		E2E0551B1FE4B85300959837 /* PokeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0551A1FE4B85300959837 /* PokeCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		CA47366C1FE3449A00D7A56B /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		CA47366E1FE3470800D7A56B /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		CA4736701FE364A100D7A56B /* PokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
+		E2E055181FE4B48500959837 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		E2E0551A1FE4B85300959837 /* PokeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			children = (
 				CA4736581FE3396700D7A56B /* Main.storyboard */,
 				CA47365D1FE3396700D7A56B /* LaunchScreen.storyboard */,
+				E2E055181FE4B48500959837 /* RoundedView.swift */,
+				E2E0551A1FE4B85300959837 /* PokeCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,9 +188,11 @@
 			files = (
 				CA47366F1FE3470800D7A56B /* Pokemon.swift in Sources */,
 				CA4736671FE3399200D7A56B /* Database.swift in Sources */,
+				E2E055191FE4B48500959837 /* RoundedView.swift in Sources */,
 				CA4736711FE364A100D7A56B /* PokemonViewController.swift in Sources */,
 				CA47366D1FE3449A00D7A56B /* PokemonCell.swift in Sources */,
 				CA4736571FE3396700D7A56B /* PokedexViewController.swift in Sources */,
+				E2E0551B1FE4B85300959837 /* PokeCollectionCell.swift in Sources */,
 				CA4736551FE3396700D7A56B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,10 +331,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				DEVELOPMENT_TEAM = EW7E662B65;
 				INFOPLIST_FILE = "Pokédex/Supporting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.keteboa.Poke-dex";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.ketebo.Poke-dex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -338,10 +347,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				DEVELOPMENT_TEAM = EW7E662B65;
 				INFOPLIST_FILE = "Pokédex/Supporting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.keteboa.Poke-dex";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.ketebo.Poke-dex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
