@@ -28,12 +28,16 @@ class PokemonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse) in
-            self?.pokemonStats = pokemonStatsResponse
-            self?.pokemonNameLabel.text = self?.pokemonStats?.name
-            self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
-            self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
-            
+        database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse, pokedexError) in
+            if let pokedexError = pokedexError {
+                // Present user with some sort of error
+                print(pokedexError.localizedDescription)
+            } else {
+                self?.pokemonStats = pokemonStatsResponse
+                self?.pokemonNameLabel.text = self?.pokemonStats?.name
+                self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
+                self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
+            }
         }
     }
     

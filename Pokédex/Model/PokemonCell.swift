@@ -11,7 +11,7 @@ import UIKit
 class PokemonCell: UITableViewCell {
     @IBOutlet weak var pokemonName: UILabel!
     
-    static let identifier = "PokemonCell"
+    static let identifier = "PokeCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

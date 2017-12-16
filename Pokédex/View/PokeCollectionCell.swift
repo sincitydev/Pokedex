@@ -12,6 +12,8 @@ class PokeCollectionCell: UICollectionViewCell {
     @IBOutlet weak var pokemonIDLabel: UILabel!
     @IBOutlet weak var pokemonNameLabel: UILabel!
     
+    static let identifier = "PokeCell"
+    
     func configureCell(pokemon: Pokemon) {
         pokemonNameLabel.text = pokemon.name
     }
