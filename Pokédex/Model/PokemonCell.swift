@@ -15,6 +15,5 @@ class PokemonCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 }
