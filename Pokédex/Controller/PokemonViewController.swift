@@ -24,21 +24,21 @@ class PokemonViewController: UIViewController {
     
     var pokemon: Pokemon!
     let database = Database.instance
-    var pokemonStats: PokemonStatsResponse?
+    var pokemonStats: PokedexResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse, pokedexError) in
-            if let pokedexError = pokedexError {
-                // Present user with some sort of error
-                print(pokedexError.localizedDescription)
-            } else {
-                self?.pokemonStats = pokemonStatsResponse
-                self?.pokemonNameLabel.text = self?.pokemonStats?.name
-                self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
-                self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
-            }
-        }
+//        database.fetchPokemon(url: pokemon.url) { [weak self] (pokeResponse, pokedexError) in
+//            if let pokedexError = pokedexError {
+//                // Present user with some sort of error
+//                print(pokedexError.localizedDescription)
+//            } else {
+//                self?.pokemonStats = pokemonStatsResponse
+//                self?.pokemonNameLabel.text = self?.pokemonStats?.name
+//                self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
+//                self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
+//            }
+//        }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

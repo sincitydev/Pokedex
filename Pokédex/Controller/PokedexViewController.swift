@@ -15,8 +15,7 @@ class PokedexViewController: UIViewController {
     let pokemonCellEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let pokemonCellHeight: CGFloat = 280
     
-    var pokemons = [Pokemon]()
-    var pokedexResponse: PokedexResponse?
+    var pokemonStore = PokemonStore.shared
     
     let database = Database.instance
     
@@ -50,8 +49,7 @@ class PokedexViewController: UIViewController {
                 // Present user with some error
                 print(pokedexError.localizedDescription)
             } else {
-                self?.pokedexResponse = pokedexResponse
-                self?.pokemons = pokedexResponse?.results ?? []
+                self?.pokemonStore.pokemonsArray = pokedexResponse?.results ?? []
                 self?.activityIndicator.stopAnimating()
                 self?.collectionView.reloadData()
             }
@@ -69,14 +67,36 @@ class PokedexViewController: UIViewController {
 
 extension PokedexViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemons.count
+        return pokemonStore.pokemonsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.identifier, for: indexPath) as! PokeCollectionCell
-        let pokemon = pokemons[indexPath.item]
-    
+        var pokemon = pokemonStore.pokemonsArray[indexPath.row]
+        
+        cell.tag = indexPath.row
+        
         cell.configureCell(pokemon: pokemon)
+        
+        if !pokemon.hasAllData {
+            print("Pokemon doesn't have all the data!")
+            // Fetch data
+            database.fetchPokemon(url: pokemon.url, completion: { [weak self] (pokemonStatsResponse, error) in
+                if error != nil {
+                    // Present user with error
+                } else {
+                    if cell.tag == indexPath.row {
+                        pokemon.height = pokemonStatsResponse?.height
+                        pokemon.id = pokemonStatsResponse?.height
+                        pokemon.weight = pokemonStatsResponse?.weight
+                        self?.pokemonStore.pokemonsArray[indexPath.row] = pokemon
+                        cell.configureCell(pokemon: pokemon)
+                    }
+                }
+            })
+        } else {
+            cell.configureCell(pokemon: pokemon)
+        }
         
         return cell
     }
@@ -84,9 +104,9 @@ extension PokedexViewController: UICollectionViewDataSource {
 
 extension PokedexViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let pokemon = pokedexResponse?.results[indexPath.row] {
-            performSegue(withIdentifier: UIStoryboard.showPokemonSegue, sender: pokemon)
-        }
+        let pokemon = pokemonStore.pokemonsArray[indexPath.row]
+        
+        performSegue(withIdentifier: UIStoryboard.showPokemonSegue, sender: pokemon)
     }
 }
 

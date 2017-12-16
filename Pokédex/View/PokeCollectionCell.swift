@@ -16,6 +16,12 @@ class PokeCollectionCell: UICollectionViewCell {
     
     func configureCell(pokemon: Pokemon) {
         pokemonNameLabel.text = pokemon.name
+        
+        if let pokemonID = pokemon.id {
+            pokemonIDLabel.text = "id: \(String(pokemonID))"
+        } else {
+            pokemonIDLabel.text = ""
+        }
     }
 }
 

@@ -36,7 +36,6 @@ class Database {
                 completion(nil, PokedexError.fetchError)
             } else {
                 let decoder = JSONDecoder()
-
                 pokedexResponse = try? decoder.decode(PokedexResponse.self, from: data!)
                 
                 DispatchQueue.main.async {
@@ -53,18 +52,19 @@ class Database {
     
     func fetchPokemon(url: URL, completion: @escaping PokemonStatsCallback) {
         var pokemonStatsResponse: PokemonStatsResponse?
-    
+
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let _ = error {
                 completion(nil, PokedexError.fetchError)
             } else {
                 let decoder = JSONDecoder()
-                
+
                 pokemonStatsResponse = try? decoder.decode(PokemonStatsResponse.self, from: data!)
+                
             }
-            
+
             DispatchQueue.main.async {
-                if pokemonStatsResponse == nil {
+                if pokemonStatsResponse != nil {
                     completion(pokemonStatsResponse, nil)
                 } else {
                     completion(nil, PokedexError.parseError)

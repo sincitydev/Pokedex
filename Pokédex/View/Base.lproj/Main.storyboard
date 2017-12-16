@@ -108,8 +108,8 @@
                                                         <constraint firstAttribute="height" constant="20" id="T7O-Fr-146"/>
                                                     </constraints>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRm-n8-U6x">
-                                                    <rect key="frame" x="173" y="314" width="29" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#008" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRm-n8-U6x">
+                                                    <rect key="frame" x="0.0" y="314" width="375" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="cBS-s5-m8e"/>
                                                     </constraints>
@@ -128,7 +128,9 @@
                                             <constraint firstItem="YM6-MG-3EQ" firstAttribute="leading" secondItem="UaG-of-OPZ" secondAttribute="leadingMargin" constant="5" id="TdM-pe-UvR"/>
                                             <constraint firstItem="h9t-oa-4x5" firstAttribute="top" secondItem="UaG-of-OPZ" secondAttribute="top" constant="5" id="Wcx-v3-iJc"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="YM6-MG-3EQ" secondAttribute="trailing" constant="5" id="dBb-me-MdZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="wRm-n8-U6x" secondAttribute="trailing" id="iV9-Ur-suC"/>
                                             <constraint firstItem="h9t-oa-4x5" firstAttribute="leading" secondItem="UaG-of-OPZ" secondAttribute="leadingMargin" id="kkK-Qd-uXf"/>
+                                            <constraint firstItem="wRm-n8-U6x" firstAttribute="leading" secondItem="UaG-of-OPZ" secondAttribute="leading" id="rUP-cQ-gQB"/>
                                             <constraint firstItem="UZA-U3-Mfx" firstAttribute="centerX" secondItem="UaG-of-OPZ" secondAttribute="centerX" id="wtq-6a-LHP"/>
                                             <constraint firstItem="UZA-U3-Mfx" firstAttribute="top" secondItem="wRm-n8-U6x" secondAttribute="bottom" id="xzU-Iw-FkB"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="h9t-oa-4x5" secondAttribute="trailing" id="zPI-HA-8zR"/>
