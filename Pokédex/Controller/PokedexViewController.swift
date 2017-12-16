@@ -28,9 +28,13 @@ class PokedexViewController: UIViewController {
     }
     
     private func setupViews() {
+        let blackColorAttribute = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.titleTextAttributes = blackColorAttribute
+        navigationController?.navigationBar.largeTitleTextAttributes = blackColorAttribute
         
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
