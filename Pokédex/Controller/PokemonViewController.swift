@@ -13,16 +13,14 @@ class PokemonViewController: UIViewController {
     let database = Database.instance
     var pokemonStats: PokemonStatsResponse?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse) in
             self?.pokemonStats = pokemonStatsResponse
             print(self?.pokemonStats!.name)
         }
-        
-        
     }
+    
     @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
