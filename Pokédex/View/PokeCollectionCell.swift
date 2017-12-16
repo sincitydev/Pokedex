@@ -9,14 +9,10 @@
 import UIKit
 
 class PokeCollectionCell: UICollectionViewCell {
-    
-    
     @IBOutlet weak var pokemonIDLabel: UILabel!
-    
     @IBOutlet weak var pokemonNameLabel: UILabel!
     
     func configureCell(pokemon: Pokemon) {
         pokemonNameLabel.text = pokemon.name
     }
-    
 }
