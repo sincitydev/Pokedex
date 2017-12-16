@@ -121,6 +121,15 @@ extension PokedexViewController: UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let pokemon = pokedexResponse?.results[indexPath.row] {
+            performSegue(withIdentifier: "showPokemon", sender: pokemon)
+        } else {
+            print("Couldn't make pokemon!")
+        }
+    }
+    
+    
     
     
 }

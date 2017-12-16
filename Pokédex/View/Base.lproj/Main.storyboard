@@ -25,6 +25,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="capture" translatesAutoresizingMaskIntoConstraints="NO" id="trq-0J-ZgG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xR5-8q-xa4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="a8I-v4-AWm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-2S-ar0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="fO7-eD-3aP">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokéapi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih7-v8-ZVo">
                                 <rect key="frame" x="82" y="50" width="211" height="58.5"/>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="50"/>
@@ -32,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I3P-3p-L3g">
-                                <rect key="frame" x="10" y="118.5" width="355" height="548.5"/>
+                                <rect key="frame" x="15" y="118.5" width="345" height="548.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Glg-yC-okf">
                                     <size key="itemSize" width="282" height="331"/>
@@ -42,7 +66,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="PokeCell" id="UaG-of-OPZ" customClass="PokeCollectionCell" customModule="Poke_dex" customModuleProvider="target">
-                                        <rect key="frame" x="36.5" y="0.0" width="282" height="331"/>
+                                        <rect key="frame" x="31.5" y="0.0" width="282" height="331"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="282" height="331"/>
@@ -135,10 +159,18 @@
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ih7-v8-ZVo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3cl-5w-SDG"/>
+                            <constraint firstItem="trq-0J-ZgG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AZm-Ds-SuA"/>
+                            <constraint firstItem="xR5-8q-xa4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Aey-iE-172"/>
+                            <constraint firstItem="trq-0J-ZgG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CzE-9b-UmK"/>
                             <constraint firstItem="ih7-v8-ZVo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="KWF-a4-63D"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I3P-3p-L3g" secondAttribute="trailing" constant="10" id="p7i-B4-hkQ"/>
+                            <constraint firstItem="xR5-8q-xa4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PbC-5h-LAT"/>
+                            <constraint firstItem="trq-0J-ZgG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="YIh-iF-mM1"/>
+                            <constraint firstItem="trq-0J-ZgG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="byH-dW-dVp"/>
+                            <constraint firstItem="xR5-8q-xa4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dXe-az-GV7"/>
+                            <constraint firstItem="xR5-8q-xa4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="esf-hk-iat"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I3P-3p-L3g" secondAttribute="trailing" constant="15" id="p7i-B4-hkQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I3P-3p-L3g" secondAttribute="bottom" id="pJa-9N-BUw"/>
-                            <constraint firstItem="I3P-3p-L3g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="vw7-IQ-pci"/>
+                            <constraint firstItem="I3P-3p-L3g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="vw7-IQ-pci"/>
                             <constraint firstItem="I3P-3p-L3g" firstAttribute="top" secondItem="ih7-v8-ZVo" secondAttribute="bottom" constant="10" id="ydb-1l-jXM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -182,6 +214,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="capture" width="359" height="202"/>
         <image name="wartortle" width="1500" height="1609"/>
     </resources>
 </document>
