@@ -11,7 +11,7 @@ import UIKit
 class PokedexViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-    let edgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    let edgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     var pokemons = [Pokemon]()
     var pokedexResponse: PokedexResponse?
@@ -21,6 +21,7 @@ class PokedexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.isTranslucent = false
         
         view.addSubview(activityIndicator)
@@ -92,13 +93,12 @@ extension PokedexViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalWidth = collectionView.bounds.width
-        let availableWidth = totalWidth - (edgeInsets.left + edgeInsets.right)
+        let availableWidth = totalWidth - (edgeInsets.left * 3)
         let cellWidth = availableWidth / 2
 
-        return CGSize(width: cellWidth - 5, height: 280)
+        return CGSize(width: cellWidth, height: 280)
     }
-    
-<<<<<<< Updated upstream
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let pokemon = pokedexResponse?.results[indexPath.row] {
             performSegue(withIdentifier: "showPokemon", sender: pokemon)
@@ -106,21 +106,16 @@ extension PokedexViewController: UICollectionViewDelegate, UICollectionViewDataS
             print("Couldn't make pokemon!")
         }
     }
-    
-    
-    
-    
-=======
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return edgeInsets
     }
->>>>>>> Stashed changes
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return edgeInsets.bottom
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
-
-
-
-
-
-
-
-

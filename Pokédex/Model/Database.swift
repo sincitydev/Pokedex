@@ -55,4 +55,6 @@ class Database {
         }
         task.resume()
     }
+    
+    //func fetchPokemonInfo(url: URL, completion: @escaping )
 }

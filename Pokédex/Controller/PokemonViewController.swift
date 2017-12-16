@@ -18,7 +18,6 @@ class PokemonViewController: UIViewController {
         super.viewDidLoad()
         database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse) in
             self?.pokemonStats = pokemonStatsResponse
-            print(self?.pokemonStats!.name)
         }
     }
     
