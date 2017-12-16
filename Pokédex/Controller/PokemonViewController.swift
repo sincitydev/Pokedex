@@ -30,14 +30,10 @@ class PokemonViewController: UIViewController {
         super.viewDidLoad()
         database.fetchPokemon(url: pokemon.url) { [weak self] (pokemonStatsResponse) in
             self?.pokemonStats = pokemonStatsResponse
-<<<<<<< Updated upstream
-=======
-            //print(self?.pokemonStats!.name)
             self?.pokemonNameLabel.text = self?.pokemonStats?.name
             self?.pokemonIDLabel.text = String(describing: self?.pokemonStats?.id)
             self?.pokemonWeightLabel.text = String(describing: self?.pokemonStats?.weight)
             
->>>>>>> Stashed changes
         }
     }
     

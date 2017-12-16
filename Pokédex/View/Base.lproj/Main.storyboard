@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ixq-lX-Z7l">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
->>>>>>> Stashed changes
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-<<<<<<< Updated upstream
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-=======
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
->>>>>>> Stashed changes
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,19 +67,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wartortle" translatesAutoresizingMaskIntoConstraints="NO" id="h9t-oa-4x5">
-<<<<<<< Updated upstream
                                                     <rect key="frame" x="8" y="5" width="359" height="306"/>
                                                     <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wartortle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZA-U3-Mfx">
                                                     <rect key="frame" x="136" y="334.5" width="103" height="20.5"/>
-=======
-                                                    <rect key="frame" x="0.0" y="5" width="282" height="254"/>
-                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wartortle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZA-U3-Mfx">
-                                                    <rect key="frame" x="90" y="282.5" width="103" height="20.5"/>
->>>>>>> Stashed changes
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="CQA-vc-ThS"/>
                                                     </constraints>
@@ -96,17 +80,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YM6-MG-3EQ">
-<<<<<<< Updated upstream
                                                     <rect key="frame" x="13" y="358" width="349" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkO-Y5-G6W">
                                                             <rect key="frame" x="0.0" y="0.0" width="164.5" height="20"/>
-=======
-                                                    <rect key="frame" x="5" y="306" width="272" height="20"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkO-Y5-G6W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="126" height="20"/>
->>>>>>> Stashed changes
                                                             <color key="backgroundColor" red="0.48181074857711792" green="0.61537331342697144" blue="0.82083314657211304" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="HQj-18-PiV"/>
@@ -116,11 +93,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNc-BK-FGQ">
-<<<<<<< Updated upstream
                                                             <rect key="frame" x="184.5" y="0.0" width="164.5" height="20"/>
-=======
-                                                            <rect key="frame" x="146" y="0.0" width="126" height="20"/>
->>>>>>> Stashed changes
                                                             <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="FO0-5i-QVZ"/>
@@ -136,11 +109,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRm-n8-U6x">
-<<<<<<< Updated upstream
                                                     <rect key="frame" x="173" y="314" width="29" height="20.5"/>
-=======
-                                                    <rect key="frame" x="127" y="262" width="29" height="20.5"/>
->>>>>>> Stashed changes
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="cBS-s5-m8e"/>
                                                     </constraints>
@@ -403,11 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5f-NU-jlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
             <point key="canvasLocation" x="1044" y="27"/>
-=======
-            <point key="canvasLocation" x="1333.5999999999999" y="28.335832083958024"/>
->>>>>>> Stashed changes
         </scene>
     </scenes>
     <resources>
