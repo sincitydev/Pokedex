@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
+import Apollo
 
-enum PokedexError: Error {
+enum DatabaseError: Error {
     case fetchError
     case parseError
     
@@ -21,53 +23,48 @@ enum PokedexError: Error {
 }
 
 class Database {
+    let pokeApiGraphQLEndpoint = URL(string: "https://graphql-pokemon.now.sh")!
+    lazy var apollo = ApolloClient(url: pokeApiGraphQLEndpoint)
+    
     static let instance = Database()
     
-    typealias PokedexCallback = (PokedexResponse?, Error?) -> Void
-    typealias PokemonStatsCallback = (PokemonStatsResponse?, Error?) -> Void
+    typealias PokemonsCallback = ([Pokemon]?, DatabaseError?) -> Void
+    typealias PokemonPicCallback = (UIImage?, DatabaseError?) -> Void
     
-    private var api = URL(string: "https://pokeapi.co/api/v2/pokemon/?limit=100")!
-    
-    func fetchPokedex(completion: @escaping PokedexCallback) {
-        var pokedexResponse: PokedexResponse?
+    func fetchPokedex(firstNumberOfPokemon: Int, completion: @escaping PokemonsCallback) {
+        var pokemons: [Pokemon] = []
+        let pokemonQuery = PokemonsQuery(first: firstNumberOfPokemon)
         
-        let task = URLSession.shared.dataTask(with: api) { (data, response, error) in
+        apollo.fetch(query: pokemonQuery) { result, error in
             if let _ = error {
-                completion(nil, PokedexError.fetchError)
-            } else {
-                let decoder = JSONDecoder()
-                pokedexResponse = try? decoder.decode(PokedexResponse.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    if pokedexResponse != nil {
-                        completion(pokedexResponse, nil)
-                    } else {
-                        completion(nil, PokedexError.parseError)
+                completion(nil, DatabaseError.fetchError)
+                return
+            } else if let graphQLPokemons = result?.data?.pokemons {
+                graphQLPokemons.forEach({ (graphQLPokemon) in
+                    if let pokemon = Pokemon(graphQLPokemon) {
+                        pokemons.append(pokemon)
                     }
-                }
+                })
+                completion(pokemons, nil)
             }
         }
-        task.resume()
     }
     
-    func fetchPokemon(url: URL, completion: @escaping PokemonStatsCallback) {
-        var pokemonStatsResponse: PokemonStatsResponse?
-
+    func fetchPokemonPic(url: URL, completion: @escaping PokemonPicCallback) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let _ = error {
-                completion(nil, PokedexError.fetchError)
+                DispatchQueue.main.async {
+                    completion(nil, DatabaseError.fetchError)
+                }
             } else {
-                let decoder = JSONDecoder()
-
-                pokemonStatsResponse = try? decoder.decode(PokemonStatsResponse.self, from: data!)
-                
-            }
-
-            DispatchQueue.main.async {
-                if pokemonStatsResponse != nil {
-                    completion(pokemonStatsResponse, nil)
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        completion(image, nil)
+                    }
                 } else {
-                    completion(nil, PokedexError.parseError)
+                    DispatchQueue.main.async {
+                        completion(nil, DatabaseError.parseError)
+                    }
                 }
             }
         }

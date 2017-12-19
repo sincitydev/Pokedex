@@ -8,50 +8,42 @@
 
 import UIKit
 
-class PokedexViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+class PokedexViewController: UICollectionViewController {
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let numberItemsPerRow = 2
     let pokemonCellEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    let pokemonCellHeight: CGFloat = 280
+    let pokemonCellHeight: CGFloat = 200
     
-    var pokemonStore = PokemonStore.shared
-    
+    var pokemons: [Pokemon] = []
     let database = Database.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         fetchPokedex()
     }
     
     private func setupViews() {
-        let blackColorAttribute = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = false
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.titleTextAttributes = blackColorAttribute
-        navigationController?.navigationBar.largeTitleTextAttributes = blackColorAttribute
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
         
         view.addSubview(activityIndicator)
         activityIndicator.center = view.center
         activityIndicator.frame.origin.y -= 100
         activityIndicator.hidesWhenStopped = true
-        
-        activityIndicator.startAnimating()
     }
     
     private func fetchPokedex() {
-        database.fetchPokedex { [weak self] (pokedexResponse, pokedexError) in
-            if let pokedexError = pokedexError {
+        activityIndicator.startAnimating()
+        
+        database.fetchPokedex(firstNumberOfPokemon: 20) { [weak self] (pokemons, databaseError) in
+            if let databaseError = databaseError {
                 // Present user with some error
-                print(pokedexError.localizedDescription)
+                print(databaseError.localizedDescription)
             } else {
-                self?.pokemonStore.pokemonsArray = pokedexResponse?.results ?? []
+                self?.pokemons = pokemons!
                 self?.activityIndicator.stopAnimating()
-                self?.collectionView.reloadData()
+                self?.collectionView?.reloadData()
             }
         }
     }
@@ -65,48 +57,37 @@ class PokedexViewController: UIViewController {
 }
 
 
-extension PokedexViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemonStore.pokemonsArray.count
+extension PokedexViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pokemons.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.identifier, for: indexPath) as! PokeCollectionCell
-        var pokemon = pokemonStore.pokemonsArray[indexPath.row]
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.identifier, for: indexPath) as! PokemonCell
+        let pokemon = pokemons[indexPath.row]
         
         cell.tag = indexPath.row
-        
         cell.configureCell(pokemon: pokemon)
-        
-        if !pokemon.hasAllData {
-            print("Pokemon doesn't have all the data!")
-            // Fetch data
-            database.fetchPokemon(url: pokemon.url, completion: { [weak self] (pokemonStatsResponse, error) in
-                if error != nil {
-                    // Present user with error
-                } else {
-                    if cell.tag == indexPath.row {
-                        pokemon.height = pokemonStatsResponse?.height
-                        pokemon.id = pokemonStatsResponse?.height
-                        pokemon.weight = pokemonStatsResponse?.weight
-                        self?.pokemonStore.pokemonsArray[indexPath.row] = pokemon
-                        cell.configureCell(pokemon: pokemon)
-                    }
+        database.fetchPokemonPic(url: pokemon.imageURL) { (image, databaseError) in
+            if let databaseError = databaseError {
+                print(databaseError.localizedDescription)
+            } else {
+                if indexPath.row == cell.tag {
+                    // Set the image of the cell
+                    cell.pokemonImageView.image = image
                 }
-            })
-        } else {
-            cell.configureCell(pokemon: pokemon)
+            }
         }
         
         return cell
     }
 }
 
-extension PokedexViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let pokemon = pokemonStore.pokemonsArray[indexPath.row]
+extension PokedexViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
         
-        performSegue(withIdentifier: UIStoryboard.showPokemonSegue, sender: pokemon)
+        cell?.bounds.size = CGSize(width: 200, height: 200)
     }
 }
 

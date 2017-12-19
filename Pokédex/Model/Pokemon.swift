@@ -8,35 +8,31 @@
 
 import Foundation
 
-struct PokedexResponse: Codable {
-    var count: Int
-    var previous: String?
-    var results: [Pokemon]
-}
-
-struct PokemonStatsResponse: Codable {
-    var id: Int
-    var height: Int
-    var weight: Int
-}
-
-struct Pokemon: Codable {
-    var id: Int?
+struct Pokemon {
     var name: String
-    var url: URL
-    var height: Int?
-    var weight: Int?
-    
-    var hasAllData: Bool {
-        if let _ = id, let _ = height, let _ = weight {
-            return true
+    var imageURL: URL
+}
+
+struct Weight {
+    var minimum: String
+    var maximum: String
+}
+
+struct Height {
+    var minimum: String
+    var maximum: String
+}
+
+extension Pokemon {
+    init?(_ graphQLPokemon: PokemonsQuery.Data.Pokemon?) {
+        if let graphQLPokemon = graphQLPokemon,
+            let name = graphQLPokemon.name,
+            let imageURLString = graphQLPokemon.image,
+            let imageURL = URL(string: imageURLString) {
+            self.name = name
+            self.imageURL = imageURL
         } else {
-            return false
+            return nil
         }
-    }
-    
-    init(name: String, url: URL) {
-        self.name = name
-        self.url = url
     }
 }
