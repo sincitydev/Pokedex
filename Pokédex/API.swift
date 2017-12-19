@@ -4,7 +4,7 @@ import Apollo
 
 public final class PokemonsQuery: GraphQLQuery {
   public static let operationString =
-    "query Pokemons($first: Int!) {\n  pokemons(first: $first) {\n    __typename\n    name\n    image\n  }\n}"
+    "query Pokemons($first: Int!) {\n  pokemons(first: $first) {\n    __typename\n    name\n    image\n    types\n  }\n}"
 
   public var first: Int
 
@@ -49,6 +49,7 @@ public final class PokemonsQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("image", type: .scalar(String.self)),
+        GraphQLField("types", type: .list(.scalar(String.self))),
       ]
 
       public var snapshot: Snapshot
@@ -57,8 +58,8 @@ public final class PokemonsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(name: String? = nil, image: String? = nil) {
-        self.init(snapshot: ["__typename": "Pokemon", "name": name, "image": image])
+      public init(name: String? = nil, image: String? = nil, types: [String?]? = nil) {
+        self.init(snapshot: ["__typename": "Pokemon", "name": name, "image": image, "types": types])
       }
 
       public var __typename: String {
@@ -86,6 +87,16 @@ public final class PokemonsQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "image")
+        }
+      }
+
+      /// The type(s) of this Pokémon
+      public var types: [String?]? {
+        get {
+          return snapshot["types"] as? [String?]
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "types")
         }
       }
     }

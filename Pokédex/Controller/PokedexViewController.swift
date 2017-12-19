@@ -12,7 +12,7 @@ class PokedexViewController: UICollectionViewController {
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let numberItemsPerRow = 2
     let pokemonCellEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    let pokemonCellHeight: CGFloat = 200
+    let pokemonCellHeight: CGFloat = 220
     
     var pokemons: [Pokemon] = []
     let database = Database.instance
@@ -75,6 +75,7 @@ extension PokedexViewController {
                 if indexPath.row == cell.tag {
                     // Set the image of the cell
                     cell.pokemonImageView.image = image
+                    cell.activityIndicator.stopAnimating()
                 }
             }
         }
@@ -85,9 +86,7 @@ extension PokedexViewController {
 
 extension PokedexViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-        cell?.bounds.size = CGSize(width: 200, height: 200)
+        //let cell = collectionView.cellForItem(at: indexPath)
     }
 }
 

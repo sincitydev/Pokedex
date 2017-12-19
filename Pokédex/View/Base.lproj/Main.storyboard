@@ -229,44 +229,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hej-Tv-pLs">
-                            <size key="itemSize" width="299" height="324"/>
+                            <size key="itemSize" width="295" height="220"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="PokemonCell" id="LoX-XB-abF" customClass="PokemonCell" customModule="Poke_dex" customModuleProvider="target">
-                                <rect key="frame" x="38" y="0.0" width="299" height="200"/>
+                                <rect key="frame" x="40" y="0.0" width="295" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="299" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wartortle" translatesAutoresizingMaskIntoConstraints="NO" id="8Ri-nB-Oe5">
-                                            <rect key="frame" x="8" y="8" width="283" height="150"/>
+                                            <rect key="frame" x="8" y="8" width="279" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="kwD-KU-3AM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulbasaur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCz-wO-zoJ">
-                                            <rect key="frame" x="15" y="163" width="269" height="32"/>
+                                            <rect key="frame" x="15" y="163" width="265" height="20"/>
                                             <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-Yd-z1Q">
+                                            <rect key="frame" x="138" y="99.5" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3m-Al-vg4" customClass="TypesView" customModule="Poke_dex" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="189" width="265" height="25"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.98607157229999998" green="0.99123425070000004" blue="0.99123425070000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="8Ri-nB-Oe5" secondAttribute="trailing" id="9z4-Cc-D5B"/>
                                     <constraint firstItem="8Ri-nB-Oe5" firstAttribute="leading" secondItem="LoX-XB-abF" secondAttribute="leadingMargin" id="EAG-br-ZZ4"/>
+                                    <constraint firstItem="Ncb-Yd-z1Q" firstAttribute="centerX" secondItem="LoX-XB-abF" secondAttribute="centerX" id="F5b-oB-8X5"/>
+                                    <constraint firstItem="w3m-Al-vg4" firstAttribute="top" secondItem="QCz-wO-zoJ" secondAttribute="bottom" constant="6" id="JQf-zo-sJF"/>
                                     <constraint firstItem="QCz-wO-zoJ" firstAttribute="leading" secondItem="LoX-XB-abF" secondAttribute="leading" constant="15" id="NCx-B7-fYb"/>
                                     <constraint firstItem="8Ri-nB-Oe5" firstAttribute="top" secondItem="LoX-XB-abF" secondAttribute="topMargin" id="VFv-Vu-6B1"/>
+                                    <constraint firstItem="Ncb-Yd-z1Q" firstAttribute="centerY" secondItem="LoX-XB-abF" secondAttribute="centerY" id="W8C-We-g31"/>
                                     <constraint firstItem="QCz-wO-zoJ" firstAttribute="top" secondItem="8Ri-nB-Oe5" secondAttribute="bottom" constant="5" id="XVa-8U-PZZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="QCz-wO-zoJ" secondAttribute="bottom" constant="5" id="emc-z7-KCD"/>
+                                    <constraint firstItem="w3m-Al-vg4" firstAttribute="leading" secondItem="LoX-XB-abF" secondAttribute="leading" constant="15" id="e4g-lq-hHb"/>
+                                    <constraint firstAttribute="bottom" secondItem="w3m-Al-vg4" secondAttribute="bottom" constant="6" id="mXU-HM-uxQ"/>
                                     <constraint firstAttribute="trailing" secondItem="QCz-wO-zoJ" secondAttribute="trailing" constant="15" id="tah-28-CqD"/>
+                                    <constraint firstAttribute="trailing" secondItem="w3m-Al-vg4" secondAttribute="trailing" constant="15" id="uai-Hk-6Lj"/>
                                 </constraints>
-                                <size key="customSize" width="299" height="200"/>
+                                <size key="customSize" width="295" height="220"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -282,8 +294,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="Ncb-Yd-z1Q" id="SW5-J7-k9o"/>
                                     <outlet property="pokemonImageView" destination="8Ri-nB-Oe5" id="f3s-cT-qUk"/>
                                     <outlet property="pokemonNameLabel" destination="QCz-wO-zoJ" id="du7-DA-4L6"/>
+                                    <outlet property="typesView" destination="w3m-Al-vg4" id="HcZ-Ub-435"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

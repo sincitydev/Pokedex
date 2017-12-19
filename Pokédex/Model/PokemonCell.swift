@@ -11,12 +11,17 @@ import UIKit
 class PokemonCell: UICollectionViewCell {
     @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var pokemonImageView: UIImageView!
+    @IBOutlet weak var typesView: TypesView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     static let identifier = "PokemonCell"
     
     func configureCell(pokemon: Pokemon) {
         pokemonNameLabel.text = pokemon.name
         addCellShadow()
+        typesView.types = pokemon.types
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
     }
     
     private func addCellShadow() {
@@ -27,25 +32,3 @@ class PokemonCell: UICollectionViewCell {
         self.layer.masksToBounds = false
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

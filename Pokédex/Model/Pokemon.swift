@@ -11,6 +11,7 @@ import Foundation
 struct Pokemon {
     var name: String
     var imageURL: URL
+    var types: [String] = []
 }
 
 struct Weight {
@@ -31,6 +32,15 @@ extension Pokemon {
             let imageURL = URL(string: imageURLString) {
             self.name = name
             self.imageURL = imageURL
+            
+            if let graphQLPokemonTypes = graphQLPokemon.types {
+                graphQLPokemonTypes.forEach({ (graphQLPokemonType) in
+                    if let pokemonType = graphQLPokemonType {
+                        types.append(pokemonType)
+                    }
+                })
+            }
+            
         } else {
             return nil
         }
