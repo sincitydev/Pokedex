@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = blackAttribute
         UINavigationBar.appearance().largeTitleTextAttributes = blackAttribute
         UINavigationBar.appearance().barTintColor = Theme.Colors.red
-        
     }
 }
 

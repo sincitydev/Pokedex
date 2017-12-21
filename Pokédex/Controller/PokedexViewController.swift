@@ -13,6 +13,7 @@ class PokedexViewController: UICollectionViewController {
     let numberItemsPerRow = 2
     let pokemonCellEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let pokemonCellHeight: CGFloat = 220
+    let animationVC: TimeInterval = 0.4
     
     var pokemons: [Pokemon] = []
     let database = Database.instance
@@ -36,7 +37,7 @@ class PokedexViewController: UICollectionViewController {
     private func fetchPokedex() {
         activityIndicator.startAnimating()
         
-        database.fetchPokedex(firstNumberOfPokemon: 20) { [weak self] (pokemons, databaseError) in
+        database.fetchPokedex(firstNumberOfPokemon: 100) { [weak self] (pokemons, databaseError) in
             if let databaseError = databaseError {
                 // Present user with some error
                 print(databaseError.localizedDescription)
@@ -86,7 +87,24 @@ extension PokedexViewController {
 
 extension PokedexViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let cell = collectionView.cellForItem(at: indexPath)
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        var rect = view.convert(cell.contentView.frame, from: cell.contentView)
+        
+        let pokemonView = UIView(frame: rect)
+        pokemonView.backgroundColor = .black
+        view.addSubview(pokemonView)
+        
+        pokemonView.translatesAutoresizingMaskIntoConstraints = false
+        pokemonView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 5).isActive = true
+        pokemonView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -5).isActive = true
+        pokemonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 5).isActive = true
+        pokemonView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        pokemonView.cornerRadius = 5
+        pokemonView.backgroundColor = .lightGray
+
+        UIView.animate(withDuration: animationVC) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
 }
 

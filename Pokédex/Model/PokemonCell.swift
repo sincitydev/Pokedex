@@ -18,6 +18,7 @@ class PokemonCell: UICollectionViewCell {
     
     func configureCell(pokemon: Pokemon) {
         pokemonNameLabel.text = pokemon.name
+        pokemonImageView.image = nil
         addCellShadow()
         typesView.types = pokemon.types
         activityIndicator.hidesWhenStopped = true
