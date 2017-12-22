@@ -37,7 +37,7 @@ class PokedexViewController: UICollectionViewController {
     private func fetchPokedex() {
         activityIndicator.startAnimating()
         
-        database.fetchPokedex(firstNumberOfPokemon: 100) { [weak self] (pokemons, databaseError) in
+        database.fetchPokedex(firstNumberOfPokemon: 25) { [weak self] (pokemons, databaseError) in
             if let databaseError = databaseError {
                 // Present user with some error
                 print(databaseError.localizedDescription)
@@ -97,7 +97,7 @@ extension PokedexViewController {
         pokemonView.translatesAutoresizingMaskIntoConstraints = false
         pokemonView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 5).isActive = true
         pokemonView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -5).isActive = true
-        pokemonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 5).isActive = true
+        pokemonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
         pokemonView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         pokemonView.cornerRadius = 5
         pokemonView.backgroundColor = .lightGray
